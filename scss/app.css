@@ -1,0 +1,55 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  margin-top: 4rem;
+}
+.container .card-body {
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+}
+.container .keem {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+}
+.container .keem .riga2 {
+  width: 70%;
+}
+.container .keem .card {
+  padding-left: 0;
+}
+.container .keem .card .card-body {
+  height: 80%;
+  justify-content: space-around;
+  margin: 30px auto;
+  flex-direction: column;
+  align-items: center;
+}
+.container .keem .card .card-body h5 {
+  font-size: 2.3em;
+}
+.container .keem .card .card-body p, .container .keem .card .card-body button {
+  font-size: 1.5em;
+}
+.container .keem .card .img-fluid {
+  width: 100%;
+}/*# sourceMappingURL=app.css.map */

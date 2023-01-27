@@ -1,0 +1,37 @@
+.container{
+    margin-top:4rem;
+                .card-body{
+                    justify-content: space-between;
+                    display: flex;
+                    flex-direction: column;
+                }
+        
+    .keem{
+        margin-top: 4rem;
+        display: flex;
+        justify-content: center;
+        .riga2{
+            width: 70%
+        }
+        .card{
+            padding-left:0;
+            .card-body{
+                height: 80%;
+                justify-content: space-around;
+                margin: 30px auto;
+                flex-direction: column;
+                align-items: center;
+                h5{
+                    font-size: 2.3em;
+                }
+                p, button{
+                    font-size:1.5em
+                }
+            }
+            .img-fluid{
+                width:100%
+            }
+        }
+    }
+}
+
