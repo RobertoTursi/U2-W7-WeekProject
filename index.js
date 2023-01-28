@@ -155,30 +155,30 @@
 
 //takeDeezer("Humble", "N95", "Sing About Me, I'm dying of Thirst", "King Kunta", "Family Ties", "In Utero")
 
-const takeDeezer1 = async function(...song) {
+const takeDeezer1 = async function(...rest) {
     for(let i=0; i<8; i++) {
         try{
-            let response = await fetch('https://striveschool-api.herokuapp.com/api/deezer/search?q=' + song[i] )
+            let response = await fetch('https://striveschool-api.herokuapp.com/api/deezer/search?q=' + rest[i] )
         if (response.ok) {
             let data = await response.json()
             if(i < 4 ){
                 let song = data.data.filter(song => song.artist.name === "Kendrick Lamar")
                 let row = document.querySelector(".riga1")
-                
                 row.innerHTML += `
                 <div class="col col-3">
                     <div class="card h-100" >
                     <img src="${song[0].album.cover}" class="card-img-top" alt="...">
                     <div class="card-body">
+                    <span class="rank d-none">${song[0].rank}</span>
                     <h5 class="card-title">${song[0].artist.name}</h5>
-                    <p class="card-text">${song[0].title}</p>
+                    <p class="card-text titleP">${song[0].title}</p>
                     <button onclick="deleteCard(event)" class="btn btn-primary button">Delete</button>
                     </div>
                     </div>
                 </div>
             
             ` 
-            
+            console.log(song[0].title + song[0].rank + [i])
         } else if (i === 4){
             let searchedSong = data.data.filter(searchedSong => searchedSong.artist.name === "Baby Keem")
                 let row = document.querySelector(".riga2")
@@ -191,8 +191,9 @@ const takeDeezer1 = async function(...song) {
                         </div>
                         <div class="col-md-6">
                         <div class="card-body">
+                        <span class="rank d-none">${searchedSong[0].rank}</span>
                             <h5 class="card-title">${searchedSong[0].artist.name}</h5>
-                            <p class="card-text">${searchedSong[0].title}</p>
+                            <p class="card-text titleP">${searchedSong[0].title}</p>
                             <button onclick="deleteCard(event)" class="btn btn-primary">Delete</button>
                         </div>
                         </div>
@@ -200,23 +201,52 @@ const takeDeezer1 = async function(...song) {
                 </div>
             
             ` 
+            console.log(searchedSong[0].title + searchedSong[0].rank + [i])
+        } else if (i === 5) {
+            let searchedSong = data.data.filter(searchedSong => searchedSong.artist.name === rest[i+3])
+            let carouselInner = document.querySelector(".carousel-inner")
+                      carouselInner.innerHTML += `
+                      <div class="carousel-item active">
+                      <span class="rank d-none">${searchedSong[0].rank}</span>
+                      <img src="${searchedSong[0].album.cover}" class="d-block w-100 firstImage" alt="...">
+                         <div class="carousel-caption d-none d-md-block">
+                         <h5>First slide label</h5>
+                          <p class="firstP text-dark titleP">${searchedSong[0].album.title}</p>
+                      </div> `
+                      console.log(searchedSong[0].title + searchedSong[0].rank + [i])
         } else {
+            let searchedSong = data.data.filter(searchedSong => searchedSong.artist.name === rest[i+3])
+            let carouselInner = document.querySelector(".carousel-inner")
+                      carouselInner.innerHTML += `
+                      <div class="carousel-item">
+                      <span class="rank d-none">${searchedSong[0].rank}</span>
+                      <img src="${searchedSong[0].album.cover}" class="d-block w-100 firstImage" alt="...">
+                         <div class="carousel-caption d-none d-md-block">
+                         <h5>First slide label</h5>
+                          <p class="firstP text-dark titleP">${searchedSong[0].album.title}</p>
+                      </div> `
+                      console.log(searchedSong[0].title + searchedSong[0].rank + [i])
+        }
+    }
+     
+
+
             
-             for(let j = 0; j<data.data.length; j++){
+            //  for(let j = 0; j<data.data.length; j++){
                 
-                 if(data.data[j].artist.name === song[i+3]){
-                     console.log(data)
-                     console.log("nome artista",data.data[j].artist.name)
-                     let carouselInner = document.querySelector(".carousel-inner")
-                     carouselInner.innerHTML += `
-                     <div class="carousel-item active">
-                     <img src="${data.data[0].album.cover}" class="d-block w-100 firstImage" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                        <h5>First slide label</h5>
-                         <p class="firstP">${data.data[0].album.title}</p>
-                     </div> `
-                 }
-             }
+            //      if(data.data[j].artist.name === song[i+3]){
+            //          console.log(data)
+            //          console.log("nome artista",data.data[j].artist.name)
+            //          let carouselInner = document.querySelector(".carousel-inner")
+            //          carouselInner.innerHTML += `
+            //          <div class="carousel-item active">
+            //          <img src="${data.data[0].album.cover}" class="d-block w-100 firstImage" alt="...">
+            //             <div class="carousel-caption d-none d-md-block">
+            //             <h5>First slide label</h5>
+            //              <p class="firstP">${data.data[0].album.title}</p>
+            //          </div> `
+            //      }
+            //  }
 
             // let songSearched = data.data.filter(songSearched => songSearched.artist.name === song[i+3])
             // console.log(songSearched)
@@ -229,18 +259,63 @@ const takeDeezer1 = async function(...song) {
             //    <p class="firstP">${songSearched.songSearched.album.title}</p>
             // </div> `
             
+        } catch(error) {
+            console.log("E' presente un errore di tipo: ", error)
         }
             }
             
-    }catch(error) {
-        console.log("E' presente un errore di tipo: ", error)
     }
     
+
+
+
+
+takeDeezer1("Humble", "N95", "Sing About Me, I'm dying of Thirst", "King Kunta", "Family Ties", "In Utero", "The Melodic Blue", "Davide", "Nirvana", "Baby Keem", "Gemitaiz")
+
+
+
+
+const showRank = () => {
+    let rankSpan = document.querySelectorAll(".rank")
+    let arrayOfSpan = []
+    rankSpan.forEach(span => {
+    arrayOfSpan.push(span.innerHTML)
+})
+    let title = document.querySelectorAll(".titleP")
+    let arrayOfTitle = []
+    title.forEach(title => {
+    arrayOfTitle.push(title.innerHTML)
+    })
+
+    console.log(arrayOfTitle)
+    console.log(arrayOfSpan)
+
+    for (j = 0; j < arrayOfSpan.length; j++) {
+        for (i = 0; i < arrayOfSpan.length; i ++) {
+          if (arrayOfSpan[i] > arrayOfSpan[i + 1]) {
+            let firstRank = arrayOfSpan[i] 
+            let firstRankIndex = arrayOfSpan.indexOf(firstRank)
+            let secondRank = arrayOfSpan[i + 1] 
+            let secondRankIndex = arrayOfSpan.indexOf(secondRank)
+            let firstTitle = arrayOfTitle[i] 
+            let firstTitleIndex = arrayOfTitle.indexOf(firstTitle)
+            let secondTitle = arrayOfTitle[i + 1] 
+            let secondTitleIndex = arrayOfTitle.indexOf(secondTitle)
+            arrayOfSpan.splice(firstRankIndex, 1, secondRank)
+            arrayOfSpan.splice(secondRankIndex, 1, firstRank)
+            arrayOfTitle.splice(firstTitleIndex, 1, secondTitle)
+            arrayOfTitle.splice(secondTitleIndex, 1, firstTitle)
+          
+        }
+    }
 }
+console.log(arrayOfSpan)
+console.log(arrayOfTitle)
 }
 
 
-takeDeezer1("Humble", "N95", "Sing About Me, I'm dying of Thirst", "King Kunta", "Family Ties", "In Utero", "The Melodic Blue", "Status", "Nirvana", "Baby Keem", "Marracash")
+
+
 
 counter = 0
 const deleteCard = (event) => {
@@ -269,4 +344,4 @@ const deleteCard = (event) => {
 
 
 
-
+        

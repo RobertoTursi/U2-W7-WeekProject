@@ -52,4 +52,21 @@ a {
 }
 .container .keem .card .img-fluid {
   width: 100%;
+}
+
+.carousel-inner h5, .carousel-inner p {
+  color: black;
+}
+.carousel-inner h5 {
+  font-size: 2em;
+}
+.carousel-inner p {
+  font-size: 1.3em;
+}
+
+.rankAlert {
+  display: none;
+  position: absolute;
+  top: 100px;
+  left: 60px;
 }/*# sourceMappingURL=app.css.map */
