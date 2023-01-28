@@ -276,6 +276,13 @@ takeDeezer1("Humble", "N95", "Sing About Me, I'm dying of Thirst", "King Kunta",
 
 
 const showRank = () => {
+    
+//     let container = document.querySelector(".container")
+//     container += `<div class="alert alert-warning alert-dismissible fade show rankAlert" role="alert">
+//     <p class="alertP"></p>
+//     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+//   </div>
+//   `
     let rankSpan = document.querySelectorAll(".rank")
     let arrayOfSpan = []
     rankSpan.forEach(span => {
@@ -284,11 +291,8 @@ const showRank = () => {
     let title = document.querySelectorAll(".titleP")
     let arrayOfTitle = []
     title.forEach(title => {
-    arrayOfTitle.push(title.innerHTML)
+    arrayOfTitle.push(" " + title.innerHTML)
     })
-
-    console.log(arrayOfTitle)
-    console.log(arrayOfSpan)
 
     for (j = 0; j < arrayOfSpan.length; j++) {
         for (i = 0; i < arrayOfSpan.length; i ++) {
@@ -309,8 +313,20 @@ const showRank = () => {
         }
     }
 }
+
+arrayOfTitle[0][0].slice(0, 1)
+let alertP = document.querySelector(".alertP")
+alertP.innerHTML = arrayOfTitle
+
+let alert = document.querySelector(".alert")
+alert.style.opacity = 1
+
+
+console.log(alertP.innerHTML)
+
 console.log(arrayOfSpan)
 console.log(arrayOfTitle)
+
 }
 
 

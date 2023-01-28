@@ -65,7 +65,7 @@ a {
 }
 
 .rankAlert {
-  display: none;
+  opacity: 0;
   position: absolute;
   top: 100px;
   left: 60px;
