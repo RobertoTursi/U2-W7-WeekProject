@@ -194,7 +194,7 @@ const takeDeezer1 = async function(...rest) {
                         <span class="rank d-none">${searchedSong[0].rank}</span>
                             <h5 class="card-title">${searchedSong[0].artist.name}</h5>
                             <p class="card-text titleP">${searchedSong[0].title}</p>
-                            <button onclick="deleteCard(event)" class="btn btn-primary">Delete</button>
+                            
                         </div>
                         </div>
                     </div>
@@ -210,7 +210,7 @@ const takeDeezer1 = async function(...rest) {
                       <span class="rank d-none">${searchedSong[0].rank}</span>
                       <img src="${searchedSong[0].album.cover}" class="d-block w-100 firstImage" alt="...">
                          <div class="carousel-caption d-none d-md-block">
-                         <h5>First slide label</h5>
+                         <h5>${searchedSong[0].artist.name}</h5>
                           <p class="firstP text-dark titleP">${searchedSong[0].album.title}</p>
                       </div> `
                       console.log(searchedSong[0].title + searchedSong[0].rank + [i])
@@ -222,42 +222,12 @@ const takeDeezer1 = async function(...rest) {
                       <span class="rank d-none">${searchedSong[0].rank}</span>
                       <img src="${searchedSong[0].album.cover}" class="d-block w-100 firstImage" alt="...">
                          <div class="carousel-caption d-none d-md-block">
-                         <h5>First slide label</h5>
+                         <h5>${searchedSong[0].artist.name}</h5>
                           <p class="firstP text-dark titleP">${searchedSong[0].album.title}</p>
                       </div> `
                       console.log(searchedSong[0].title + searchedSong[0].rank + [i])
         }
     }
-     
-
-
-            
-            //  for(let j = 0; j<data.data.length; j++){
-                
-            //      if(data.data[j].artist.name === song[i+3]){
-            //          console.log(data)
-            //          console.log("nome artista",data.data[j].artist.name)
-            //          let carouselInner = document.querySelector(".carousel-inner")
-            //          carouselInner.innerHTML += `
-            //          <div class="carousel-item active">
-            //          <img src="${data.data[0].album.cover}" class="d-block w-100 firstImage" alt="...">
-            //             <div class="carousel-caption d-none d-md-block">
-            //             <h5>First slide label</h5>
-            //              <p class="firstP">${data.data[0].album.title}</p>
-            //          </div> `
-            //      }
-            //  }
-
-            // let songSearched = data.data.filter(songSearched => songSearched.artist.name === song[i+3])
-            // console.log(songSearched)
-            // let carouselInner = document.querySelector(".carousel-inner")
-            // carouselInner.innerHTML += `
-            // <div class="carousel-item active">
-            // <img src="${songSearched.songSearched.album.cover}" class="d-block w-100 firstImage" alt="...">
-            //    <div class="carousel-caption d-none d-md-block">
-            //    <h5>First slide label</h5>
-            //    <p class="firstP">${songSearched.songSearched.album.title}</p>
-            // </div> `
             
         } catch(error) {
             console.log("E' presente un errore di tipo: ", error)
@@ -273,16 +243,10 @@ const takeDeezer1 = async function(...rest) {
 takeDeezer1("Humble", "N95", "Sing About Me, I'm dying of Thirst", "King Kunta", "Family Ties", "In Utero", "The Melodic Blue", "Davide", "Nirvana", "Baby Keem", "Gemitaiz")
 
 
-
+// ALERT
 
 const showRank = () => {
     
-//     let container = document.querySelector(".container")
-//     container += `<div class="alert alert-warning alert-dismissible fade show rankAlert" role="alert">
-//     <p class="alertP"></p>
-//     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-//   </div>
-//   `
     let rankSpan = document.querySelectorAll(".rank")
     let arrayOfSpan = []
     rankSpan.forEach(span => {
@@ -313,6 +277,7 @@ const showRank = () => {
         }
     }
 }
+console.log(arrayOfTitle)
 
 arrayOfTitle[0][0].slice(0, 1)
 let alertP = document.querySelector(".alertP")
@@ -330,32 +295,43 @@ console.log(arrayOfTitle)
 }
 
 
-
-
-
-counter = 0
-const deleteCard = (event) => {
-    event.target.parentNode.parentNode.style.display = "none"
-    if (counter === 0) {
-        let col = document.querySelectorAll(".col-3")
-        col.forEach(col => {
-        col.classList.add("col-4")
+// MODAL
+const titleModal = () => {
+    let title = document.querySelectorAll(".titleP")
+    let arrayOfTitle = []
+    title.forEach(title => {
+    arrayOfTitle.push(" " + title.innerHTML)
     })
-    } else if (counter === 1) {
-        let col = document.querySelectorAll(".col-4")
-        col.forEach(col => {
-        col.classList.add("col-6")
-    })
-    } else {
-        let col = document.querySelectorAll(".col-6")
-        col.forEach(col => {
-        col.classList.add("col-12")
-    })
+let modal = document.querySelector(".modal-body")
+modal.innerHTML = arrayOfTitle
 }
+
+const deleteCard = (event) => {
+      event.target.parentNode.parentNode.remove()
+}
+// counter = 0
+// const deleteCard = (event) => {
+//     event.target.parentNode.parentNode.style.display = "none"
+//     if (counter === 0) {
+//         let col = document.querySelectorAll(".col-3")
+//         col.forEach(col => {
+//         col.classList.add("col-4")
+//     })
+//     } else if (counter === 1) {
+//         let col = document.querySelectorAll(".col-4")
+//         col.forEach(col => {
+//         col.classList.add("col-6")
+//     })
+//     } else {
+//         let col = document.querySelectorAll(".col-6")
+//         col.forEach(col => {
+//         col.classList.add("col-12")
+//     })
+// }
 
     
-    counter ++
-}
+//     counter ++
+// }
 
 
 

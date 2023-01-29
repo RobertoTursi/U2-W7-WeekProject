@@ -1,11 +1,16 @@
-.carousel-inner{
-    h5,p{
-        color:black 
-    }
-    h5{
-        font-size: 2em 
-    }
-    p{
-        font-size: 1.3em 
+.carousel{
+    width: 65%;
+    margin: 4rem auto;
+    .carousel-inner{
+    
+        h5,p{
+            color:black 
+        }
+        h5{
+            font-size: 2em 
+        }
+        p{
+            font-size: 1.3em 
+        }
     }
 }
